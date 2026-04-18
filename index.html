@@ -570,6 +570,189 @@ section.block {
   .code-vs { padding: 8px 0; text-align: center; }
 }
 
+/* ═════ INTELLIGENCE SECTION (code vs AI head) ═════ */
+.intel-section {
+  background: var(--bg-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 120px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.intel-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+.intel-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.intel-head {
+  max-width: 780px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+.intel-head .eyebrow { justify-content: center; }
+.intel-head h2 {
+  font-size: clamp(38px, 4.5vw, 64px);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  margin-bottom: 24px;
+}
+.intel-head h2 .serif {
+  font-family: var(--serif); font-weight: 400; font-style: italic;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.intel-head p {
+  font-size: 17px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.intel-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.intel-side {
+  background: var(--bg-deeper);
+  border: 1px solid var(--line-strong);
+  padding: 36px 32px;
+  position: relative;
+}
+.intel-side.bad { border-color: rgba(255, 107, 107, 0.25); }
+.intel-side.good {
+  border-color: var(--line-hot);
+  background: linear-gradient(180deg, rgba(255, 77, 26, 0.04) 0%, var(--bg-deeper) 100%);
+}
+.intel-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+.intel-tag.bad { background: rgba(255, 107, 107, 0.12); color: #ff8080; }
+.intel-tag.good { background: var(--accent); color: #000; }
+
+.intel-side h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.intel-side .where {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+.intel-side .where strong { color: var(--ink-muted); font-weight: 500; }
+
+.intel-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.intel-point {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.intel-point:last-child { border-bottom: none; padding-bottom: 0; }
+.intel-point .glyph {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.intel-side.bad .glyph { color: #ff8080; }
+.intel-side.good .glyph { color: var(--accent); }
+.intel-point .body {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.intel-point .body .sub {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* The killer quote callout */
+.intel-callout {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(255, 77, 26, 0.08) 0%, transparent 70%),
+    var(--bg);
+  border: 1px solid var(--line-hot);
+  position: relative;
+  text-align: center;
+}
+.intel-callout::before,
+.intel-callout::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  width: 40px; height: 2px;
+  background: var(--accent);
+}
+.intel-callout::before { left: 0; }
+.intel-callout::after { right: 0; }
+
+.intel-callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.intel-callout-quote {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.3;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.intel-callout-quote .hl { color: var(--accent); font-style: italic; }
+
+@media (max-width: 860px) {
+  .intel-section { padding: 80px 24px; }
+  .intel-compare { grid-template-columns: 1fr; gap: 16px; }
+  .intel-side { padding: 28px 22px; }
+  .intel-callout { padding: 32px 24px; }
+  .intel-callout-quote { font-size: 18px; }
+}
+
 /* ═════ MANIFESTO ═════ */
 .manifesto {
   background: var(--bg-deeper);
@@ -1147,6 +1330,103 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- ═════ INTELLIGENCE: CODE VS AI HEAD ═════ -->
+<div class="intel-section" id="why-it-works">
+  <div class="intel-inner">
+    <div class="intel-head reveal">
+      <div class="eyebrow">Why the architecture matters</div>
+      <h2>Judgment belongs <span class="serif">in code.</span> Not in the AI's head.</h2>
+      <p>
+        With a pile of raw MCPs, the AI has to guess which tools to call, how to stitch the results, and what matters. That guess changes every time. With Insigh8s, the orchestration lives inside a tested tool, so the answer is the same whether you're on Claude, GPT, Gemini, or a local Llama.
+      </p>
+    </div>
+
+    <div class="intel-compare reveal">
+      <!-- Raw MCPs side -->
+      <div class="intel-side bad">
+        <span class="intel-tag bad">Six raw MCPs</span>
+        <h3>Intelligence in the AI's head.</h3>
+        <div class="where">Where the judgment lives: <strong>LLM reasoning</strong></div>
+        <ul class="intel-points">
+          <li class="intel-point">
+            <span class="glyph">×</span>
+            <span class="body">
+              Different AIs give different answers.
+              <span class="sub">Claude, GPT-4, Gemini, and Llama all choose tools and weigh findings differently.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">×</span>
+            <span class="body">
+              Same AI, same question, different answer tomorrow.
+              <span class="sub">"Audit payments" and "check the payments namespace" produce two different results.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">×</span>
+            <span class="body">
+              Can't be tested, versioned, or audited.
+              <span class="sub">A compliance team can't review an LLM's reasoning. They need code they can read.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">×</span>
+            <span class="body">
+              AI forgets steps. Picks wrong tools. Writes bad queries.
+              <span class="sub">Raw JSON dumps back to the AI's context window. Slow, expensive, unreliable.</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Insigh8s side -->
+      <div class="intel-side good">
+        <span class="intel-tag good">Insigh8s MCP</span>
+        <h3>Intelligence in the code.</h3>
+        <div class="where">Where the judgment lives: <strong>tested Go, versioned, auditable</strong></div>
+        <ul class="intel-points">
+          <li class="intel-point">
+            <span class="glyph">✓</span>
+            <span class="body">
+              Deterministic across every model.
+              <span class="sub">Claude, GPT, Gemini, local Llama: same question in, same answer out.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">✓</span>
+            <span class="body">
+              Prompt variations don't change the result.
+              <span class="sub">The AI calls one tool. The orchestration happens in code, not in interpretation.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">✓</span>
+            <span class="body">
+              Versioned, testable, auditable.
+              <span class="sub"><code>audit_namespace</code> v1.2 is a reviewable diff. Your security team can read what it checks.</span>
+            </span>
+          </li>
+          <li class="intel-point">
+            <span class="glyph">✓</span>
+            <span class="body">
+              One tool call. Pre-joined, pre-ranked, pre-formatted.
+              <span class="sub">Tokens spent on the answer, not on raw JSON bouncing through the AI's context.</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- The killer line -->
+    <div class="intel-callout reveal">
+      <div class="intel-callout-label">the punchline</div>
+      <div class="intel-callout-quote">
+        Kubernetes triage shouldn't live in an <span class="hl">LLM's guess.</span> It should live in <span class="hl">code your team can read, test, and trust.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═════ MANIFESTO ═════ -->
 <div class="manifesto" id="manifesto">
   <div class="manifesto-inner reveal">
@@ -1206,7 +1486,7 @@ footer a:hover { color: var(--accent); }
         <span class="code-line"><span class="cmt"># done. ~6 seconds.</span></span>
         <div class="code-foot">
           <strong>Pre-joined, pre-judged, pre-prioritized.</strong>
-          Twelve years of Kubernetes triage instincts, encoded as one call your AI can reason over.
+          Real production triage instincts, encoded as one call your AI can reason over.
         </div>
       </div>
     </div>
