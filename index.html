@@ -886,6 +886,128 @@ section.block {
 .manifesto-sign::after { content: '  ·'; color: var(--accent); }
 
 /* ═════════════════════════════════════════════════
+   BLOG  ·  Latest posts from blog.insigh8s.io
+   ═════════════════════════════════════════════════ */
+.blog-wrap {
+  padding: 96px 48px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-bottom: var(--rule);
+}
+.blog-head {
+  display: grid;
+  grid-template-columns: 260px 1fr auto;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: var(--rule-hair);
+}
+.blog-head .block-label { padding-top: 0; }
+.blog-head h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 300;
+}
+.blog-head h2 .italic {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.blog-head .blog-view-all {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.blog-head .blog-view-all:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.blog-head .blog-view-all .arrow { display: inline-block; transition: transform 0.2s; }
+.blog-head .blog-view-all:hover .arrow { transform: translateX(3px); }
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--rule);
+}
+.post-card {
+  padding: 28px 24px 24px;
+  border-right: var(--rule);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.post-card:last-child { border-right: none; }
+.post-card:hover { background: var(--bg-soft); }
+.post-card.featured {
+  background: var(--accent-soft);
+}
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.post-meta .tag {
+  color: var(--accent);
+}
+.post-card.featured .tag {
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.post-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.post-title .italic { font-style: italic; color: var(--accent); }
+.post-excerpt {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.post-readmore {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+.post-readmore .arrow { transition: transform 0.2s; display: inline-block; }
+.post-card:hover .post-readmore .arrow { transform: translateX(2px); }
+
+/* ═════════════════════════════════════════════════
    CONTRIBUTE  ·  OSS-native, three paths
    ═════════════════════════════════════════════════ */
 .contribute-wrap {
@@ -1189,7 +1311,11 @@ footer a:hover { color: var(--accent); }
   .code-side { border-right: none; border-bottom: var(--rule); }
   .code-side:last-child { border-bottom: none; }
 
-  .waitlist-wrap, .contribute-wrap { padding: 64px 24px; }
+  .waitlist-wrap, .contribute-wrap, .blog-wrap { padding: 64px 24px; }
+  .blog-head { grid-template-columns: 1fr; gap: 16px; align-items: start; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .post-card { border-right: none; border-bottom: var(--rule); }
+  .post-card:last-child { border-bottom: none; }
   .contribute-paths { grid-template-columns: 1fr; }
   .path-card { border-right: none; border-bottom: var(--rule); }
   .path-card:last-child { border-bottom: none; }
@@ -1219,7 +1345,8 @@ footer a:hover { color: var(--accent); }
     <a href="#architecture"><span class="num">01</span>Architecture</a>
     <a href="#tools"><span class="num">02</span>Tools</a>
     <a href="#why-it-works"><span class="num">03</span>Why</a>
-    <a href="https://github.com/insigh8s" target="_blank" rel="noopener"><span class="num">04</span>GitHub</a>
+    <a href="#blog"><span class="num">04</span>Blog</a>
+    <a href="https://github.com/insigh8s" target="_blank" rel="noopener"><span class="num">05</span>GitHub</a>
   </div>
   <div class="topbar-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle light/dark">
@@ -1801,6 +1928,62 @@ footer a:hover { color: var(--accent); }
     <div class="manifesto-sign">Built by practitioners · Open source from day one · Apache 2.0</div>
   </div>
 </div>
+
+<!-- ═════════════════════════════════════════════════
+     BLOG
+     ═════════════════════════════════════════════════ -->
+<section id="blog">
+  <div class="blog-wrap reveal">
+    <div class="blog-head">
+      <div class="block-label"><span class="num">04</span>Writing</div>
+      <h2>Notes from the <span class="italic">build.</span></h2>
+      <a href="https://blog.insigh8s.io" target="_blank" rel="noopener" class="blog-view-all">
+        All posts <span class="arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+      <!-- Post 01 (featured intro post) -->
+      <a href="https://blog.insigh8s.io/insigh8s-introduction" target="_blank" rel="noopener" class="post-card featured">
+        <div class="post-meta">
+          <span class="tag">Intro</span>
+          <span>5 min read</span>
+        </div>
+        <div class="post-title">Insigh8s: an opinionated MCP server for <span class="italic">Kubernetes triage.</span></div>
+        <p class="post-excerpt">
+          Your AI can already call kubectl. What it can't do is tell you which 40 pods to look at first. Here's what we're building, and why composite tools beat raw MCPs.
+        </p>
+        <span class="post-readmore">Read post <span class="arrow">→</span></span>
+      </a>
+
+      <!-- Post 02 (placeholder / coming soon) -->
+      <a href="https://blog.insigh8s.io" target="_blank" rel="noopener" class="post-card">
+        <div class="post-meta">
+          <span class="tag">Design</span>
+          <span>Coming soon</span>
+        </div>
+        <div class="post-title">Why `audit_namespace` is the <span class="italic">first</span> tool we're shipping.</div>
+        <p class="post-excerpt">
+          A walkthrough of what a single 2am triage call actually does under the hood: the five data sources, the join logic, and the opinions encoded in Go.
+        </p>
+        <span class="post-readmore">Follow on Hashnode <span class="arrow">→</span></span>
+      </a>
+
+      <!-- Post 03 (placeholder / coming soon) -->
+      <a href="https://blog.insigh8s.io" target="_blank" rel="noopener" class="post-card">
+        <div class="post-meta">
+          <span class="tag">Platform</span>
+          <span>Coming soon</span>
+        </div>
+        <div class="post-title">Wiring OpenCost, Kyverno, and Prometheus to <span class="italic">one MCP.</span></div>
+        <p class="post-excerpt">
+          How Insigh8s talks directly to the underlying CNCF tools (not their MCPs) and what happens when one of them isn't installed on the cluster.
+        </p>
+        <span class="post-readmore">Follow on Hashnode <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ═════════════════════════════════════════════════
      CONTRIBUTE
