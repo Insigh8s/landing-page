@@ -886,15 +886,20 @@ section.block {
 .manifesto-sign::after { content: '  ·'; color: var(--accent); }
 
 /* ═════════════════════════════════════════════════
-   WAITLIST
+   CONTRIBUTE  ·  OSS-native, three paths
    ═════════════════════════════════════════════════ */
-.waitlist-wrap {
+.contribute-wrap {
   padding: 96px 48px;
-  max-width: 780px;
+  max-width: var(--max-w);
   margin: 0 auto;
+  border-bottom: var(--rule);
+}
+.contribute-head {
+  max-width: 820px;
+  margin: 0 auto 64px;
   text-align: center;
 }
-.waitlist-eyebrow {
+.contribute-eyebrow {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.2em;
@@ -903,69 +908,151 @@ section.block {
   color: var(--accent);
   margin-bottom: 24px;
 }
-.waitlist-wrap h2 {
-  font-size: clamp(44px, 5.5vw, 76px);
-  line-height: 0.95;
+.contribute-head h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 0.98;
   letter-spacing: -0.04em;
   font-weight: 300;
   margin-bottom: 24px;
 }
-.waitlist-wrap h2 .bold { font-weight: 900; }
-.waitlist-wrap h2 .italic {
+.contribute-head h2 .bold { font-weight: 900; }
+.contribute-head h2 .italic {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
   color: var(--accent);
 }
-.waitlist-wrap > p.sub {
-  font-size: 17px;
+.contribute-head p.sub {
+  font-size: 16px;
   color: var(--ink-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contribute-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 12px;
+  background: var(--accent-soft);
+  border: 0.5px solid var(--accent);
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+.contribute-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.contribute-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--rule);
+  max-width: 1000px;
+  margin: 0 auto 56px;
+}
+.path-card {
+  padding: 36px 28px;
+  border-right: var(--rule);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  transition: background 0.2s;
+  text-align: left;
+}
+.path-card:last-child { border-right: none; }
+.path-card:hover { background: var(--bg-soft); }
+.path-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+}
+.path-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.path-title .italic { font-style: italic; color: var(--accent); }
+.path-desc {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 3px;
+  align-self: flex-start;
+  transition: all 0.15s;
+}
+.path-cta:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.path-cta .arrow { transition: transform 0.2s; display: inline-block; }
+.path-cta:hover .arrow { transform: translateX(3px); }
+
+/* Email signup (minimal) */
+.updates-wrap {
   max-width: 560px;
-  margin: 0 auto 48px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 48px;
+  border-top: var(--rule-hair);
+}
+.updates-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+.updates-label strong { color: var(--ink); }
+.updates-sub {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 24px;
   line-height: 1.55;
 }
 
-.role-select {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-.role-pill {
-  padding: 8px 14px;
-  border: var(--rule-hair);
-  background: transparent;
-  color: var(--ink-muted);
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  cursor: pointer;
-  transition: all 0.15s;
-  border-radius: 3px;
-}
-.role-pill:hover { color: var(--ink); border-color: var(--ink-muted); }
-.role-pill.active {
-  background: var(--invert-bg);
-  border-color: var(--invert-bg);
-  color: var(--invert-ink);
-}
-
-.waitlist-form {
+.updates-form {
   display: flex;
   gap: 8px;
-  max-width: 480px;
-  margin: 0 auto 20px;
   padding: 4px;
   background: var(--bg-soft);
   border: 1.5px solid var(--line);
   border-radius: 3px;
   transition: border-color 0.15s;
+  margin-bottom: 16px;
 }
-.waitlist-form:focus-within { border-color: var(--accent); }
-.waitlist-form input[type="email"] {
+.updates-form:focus-within { border-color: var(--accent); }
+.updates-form input[type="email"] {
   flex: 1;
   background: transparent;
   border: none;
@@ -975,9 +1062,9 @@ section.block {
   padding: 12px 14px;
   outline: none;
 }
-.waitlist-form input::placeholder { color: var(--ink-dim); }
-.waitlist-form button {
-  padding: 12px 22px;
+.updates-form input::placeholder { color: var(--ink-dim); }
+.updates-form button {
+  padding: 12px 20px;
   background: var(--invert-bg);
   color: var(--invert-ink);
   font-family: var(--mono);
@@ -991,10 +1078,10 @@ section.block {
   white-space: nowrap;
   border-radius: 2px;
 }
-.waitlist-form button:hover { background: var(--accent); color: #fff; }
-.waitlist-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+.updates-form button:hover { background: var(--accent); color: #fff; }
+.updates-form button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.waitlist-meta {
+.updates-meta {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--ink-dim);
@@ -1009,9 +1096,6 @@ section.block {
   font-family: var(--mono);
   font-size: 12px;
   text-align: left;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
   display: none;
   border-radius: 3px;
 }
@@ -1105,8 +1189,11 @@ footer a:hover { color: var(--accent); }
   .code-side { border-right: none; border-bottom: var(--rule); }
   .code-side:last-child { border-bottom: none; }
 
-  .waitlist-wrap { padding: 64px 24px; }
-  .waitlist-form { flex-direction: column; }
+  .waitlist-wrap, .contribute-wrap { padding: 64px 24px; }
+  .contribute-paths { grid-template-columns: 1fr; }
+  .path-card { border-right: none; border-bottom: var(--rule); }
+  .path-card:last-child { border-bottom: none; }
+  .updates-form { flex-direction: column; }
 
   .spec-bar { padding: 12px 18px; justify-content: center; text-align: center; font-size: 9px; }
   footer { padding: 20px 18px; flex-direction: column; text-align: center; }
@@ -1144,7 +1231,7 @@ footer a:hover { color: var(--accent); }
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
       </svg>
     </button>
-    <a href="#waitlist" class="topbar-cta">Get access →</a>
+    <a href="#contribute" class="topbar-cta">Contribute →</a>
   </div>
 </div>
 
@@ -1171,8 +1258,8 @@ footer a:hover { color: var(--accent); }
       </p>
     </div>
     <div class="hero-cta">
-      <a href="#waitlist" class="btn-fill">Join waitlist →</a>
-      <a href="#architecture" class="btn-outline">How it works</a>
+      <a href="#contribute" class="btn-fill">Join as contributor →</a>
+      <a href="https://github.com/insigh8s" class="btn-outline" target="_blank" rel="noopener">Star on GitHub</a>
     </div>
   </div>
 
@@ -1240,7 +1327,7 @@ footer a:hover { color: var(--accent); }
 <div class="problem reveal">
   <div class="block-label"><span class="num">//</span>The problem</div>
   <div class="problem-text">
-    Your cluster data is <span class="hl">scattered across tools</span>. Your AI assistant sees <span class="hl">none of them</span>. So when something breaks, you're still the one correlating costs, workloads, policies, network flows, and security alerts, by hand, at 2am.
+    You can wire a dozen MCPs to your AI. What you can't wire in is the <span class="hl">judgement</span>. Knowing which data to join, what thresholds matter, how to rank findings, and what to fix first. That still lives in the head of the engineer on call at 2am.
   </div>
 </div>
 
@@ -1649,7 +1736,6 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <div class="intel-punchline reveal">
-      <div class="intel-punchline-label">· The punchline ·</div>
       <div class="intel-punchline-quote">
         Kubernetes triage shouldn't live in an <span class="hl">LLM's guess.</span> It should live in <span class="hl">code your team can read, test, and trust.</span>
       </div>
@@ -1717,45 +1803,75 @@ footer a:hover { color: var(--accent); }
 </div>
 
 <!-- ═════════════════════════════════════════════════
-     WAITLIST
+     CONTRIBUTE
      ═════════════════════════════════════════════════ -->
-<section id="waitlist">
-  <div class="waitlist-wrap reveal">
-    <div class="waitlist-eyebrow">· 04 · Early access ·</div>
-    <h2>Be first to <span class="italic">ship.</span></h2>
-    <p class="sub">
-      v0.1 lands Q2 2026. Waitlist members get the install guide, the architecture deep-dive, and a private Slack with the maintainers. No spam, no hype.
-    </p>
-
-    <div class="role-select" role="radiogroup" aria-label="Your role">
-      <button type="button" class="role-pill active" data-role="platform">Platform / SRE</button>
-      <button type="button" class="role-pill" data-role="security">Security</button>
-      <button type="button" class="role-pill" data-role="finops">FinOps</button>
-      <button type="button" class="role-pill" data-role="developer">Developer</button>
-      <button type="button" class="role-pill" data-role="other">Other</button>
+<section id="contribute">
+  <div class="contribute-wrap">
+    <div class="contribute-head reveal">
+      <div class="contribute-status">Work in progress · v0.1 coming soon</div>
+      <h2>Open source <span class="italic">from day one.</span><br>Help build it.</h2>
+      <p class="sub">
+        Insigh8s is a community project, Apache 2.0 licensed. The design is open, the roadmap is public, and the first release is taking shape. If the composite-tool approach resonates with you, there are a few ways to get involved.
+      </p>
     </div>
 
-    <!--
-      ══════════════════════════════════════════════════════════════
-      WAITLIST FORM · powered by formsubmit.co
-      ══════════════════════════════════════════════════════════════
-      Email notifications sent to insigh8s@gmail.com
-      ══════════════════════════════════════════════════════════════
-    -->
-    <form class="waitlist-form" id="waitlistForm" action="https://formsubmit.co/ajax/insigh8s@gmail.com" method="POST" novalidate>
-      <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" aria-label="Email address">
-      <input type="hidden" name="role" id="roleInput" value="platform">
-      <input type="hidden" name="source" value="insigh8s.io">
-      <input type="hidden" name="_subject" value="New Insigh8s waitlist signup">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <button type="submit" id="submitBtn">
-        Join waitlist →
-      </button>
-    </form>
+    <div class="contribute-paths reveal">
+      <!-- Path 01 -->
+      <a href="https://github.com/insigh8s" target="_blank" rel="noopener" class="path-card">
+        <div class="path-num">· 01 ·</div>
+        <div class="path-title">Star the <span class="italic">repo.</span></div>
+        <p class="path-desc">
+          Following the repo is the best way to track progress, see the roadmap take shape, and be notified when v0.1 drops. No commitment.
+        </p>
+        <span class="path-cta">GitHub <span class="arrow">↗</span></span>
+      </a>
 
-    <div class="waitlist-meta">No spam · Unsubscribe anytime</div>
-    <div class="form-msg" id="formMsg"></div>
+      <!-- Path 02 -->
+      <a href="https://github.com/insigh8s/insigh8s/discussions" target="_blank" rel="noopener" class="path-card">
+        <div class="path-num">· 02 ·</div>
+        <div class="path-title">Shape the <span class="italic">design.</span></div>
+        <p class="path-desc">
+          What composite tools would you find useful? What thresholds should be defaults? The early decisions are still open. Join the GitHub Discussions and help set direction.
+        </p>
+        <span class="path-cta">Discussions <span class="arrow">↗</span></span>
+      </a>
+
+      <!-- Path 03 -->
+      <a href="https://github.com/insigh8s/insigh8s/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" class="path-card">
+        <div class="path-num">· 03 ·</div>
+        <div class="path-title">Write <span class="italic">code.</span></div>
+        <p class="path-desc">
+          Good-first-issue labels, a simple architecture, and a roadmap you can pick from. Platform engineers, FinOps folks, security people, and writers all welcome.
+        </p>
+        <span class="path-cta">Contribute <span class="arrow">↗</span></span>
+      </a>
+    </div>
+
+    <!-- Minimal email signup -->
+    <div class="updates-wrap reveal">
+      <div class="updates-label">Or just <strong>get notified</strong> when v0.1 ships</div>
+      <p class="updates-sub">
+        One email. No marketing. Sent when the first release lands and is stable enough to install.
+      </p>
+
+      <!--
+        ══════════════════════════════════════════════════════════════
+        UPDATE LIST · powered by formsubmit.co
+        ══════════════════════════════════════════════════════════════
+      -->
+      <form class="updates-form" id="waitlistForm" action="https://formsubmit.co/ajax/insigh8s@gmail.com" method="POST" novalidate>
+        <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" aria-label="Email address">
+        <input type="hidden" name="source" value="insigh8s.io">
+        <input type="hidden" name="intent" value="release-notification">
+        <input type="hidden" name="_subject" value="New Insigh8s release-notification signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <button type="submit" id="submitBtn">Notify me</button>
+      </form>
+
+      <div class="updates-meta">No spam · Unsubscribe anytime</div>
+      <div class="form-msg" id="formMsg"></div>
+    </div>
   </div>
 </section>
 
@@ -1771,7 +1887,7 @@ footer a:hover { color: var(--accent); }
     <a href="https://github.com/insigh8s" target="_blank" rel="noopener">GitHub</a>
     <a href="https://blog.insigh8s.io" target="_blank" rel="noopener">Blog</a>
     <a href="#architecture">Architecture</a>
-    <a href="#waitlist">Waitlist</a>
+    <a href="#contribute">Contribute</a>
   </div>
   <div>© 2026 · Apache 2.0</div>
 </footer>
@@ -1791,17 +1907,6 @@ footer a:hover { color: var(--accent); }
     if (!localStorage.getItem('insigh8s-theme')) {
       document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
     }
-  });
-
-  // ══════════════════ Role selector ══════════════════
-  const pills = document.querySelectorAll('.role-pill');
-  const roleInput = document.getElementById('roleInput');
-  pills.forEach(p => {
-    p.addEventListener('click', () => {
-      pills.forEach(x => x.classList.remove('active'));
-      p.classList.add('active');
-      roleInput.value = p.dataset.role;
-    });
   });
 
   // ══════════════════ Form (FormSubmit) ══════════════════
@@ -1832,7 +1937,7 @@ footer a:hover { color: var(--accent); }
       });
       if (!response.ok) throw new Error('Non-200 response');
       formMsg.classList.add('success');
-      formMsg.textContent = '✓ You\'re on the list. We\'ll be in touch when v0.1 ships.';
+      formMsg.textContent = '✓ You\'re subscribed. We\'ll email when v0.1 ships. Nothing else.';
       emailInput.value = '';
     } catch (err) {
       console.error('Waitlist signup failed:', err);
