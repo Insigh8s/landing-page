@@ -556,6 +556,44 @@ section.block {
   width: 100%;
   border-top: var(--rule);
 }
+.tt-intent-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  background: var(--invert-bg);
+  color: var(--invert-ink);
+  border-bottom: var(--rule);
+}
+.tt-intent-num {
+  padding: 18px 20px;
+  border-right: var(--rule-hair);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-align: center;
+}
+.tt-intent-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tt-intent-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.tt-intent-desc {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.85;
+}
 .tools-table .tt-row {
   display: grid;
   grid-template-columns: 60px 1.5fr 2.5fr 1.2fr;
@@ -1393,49 +1431,49 @@ footer a:hover { color: var(--accent); }
   <div class="hero-right">
     <div>
       <div class="tool-spec-title">
-        <span>◆ Composite tools</span>
-        <span>n = 6</span>
+        <span>◆ v0.1 tools</span>
+        <span>one tool per intent</span>
       </div>
       <ul class="tool-spec-list">
         <li class="tool-spec-row">
+          <span class="tool-spec-num">◆</span>
+          <span class="tool-spec-name" style="color: var(--accent); font-weight: 700;">SRE · investigate</span>
+          <span class="tool-spec-val">root cause</span>
+        </li>
+        <li class="tool-spec-row">
           <span class="tool-spec-num">01</span>
-          <span class="tool-spec-name">audit_namespace</span>
+          <span class="tool-spec-name">investigate_namespace</span>
           <span class="tool-spec-val">5 sources</span>
         </li>
         <li class="tool-spec-row">
+          <span class="tool-spec-num">◆</span>
+          <span class="tool-spec-name" style="color: var(--accent); font-weight: 700;">FinOps · spend</span>
+          <span class="tool-spec-val">cost only</span>
+        </li>
+        <li class="tool-spec-row">
           <span class="tool-spec-num">02</span>
-          <span class="tool-spec-name">find_expensive_violators</span>
-          <span class="tool-spec-val">2 sources</span>
+          <span class="tool-spec-name">namespace_cost</span>
+          <span class="tool-spec-val">opencost</span>
+        </li>
+        <li class="tool-spec-row">
+          <span class="tool-spec-num">◆</span>
+          <span class="tool-spec-name" style="color: var(--accent); font-weight: 700;">Audit · compliance</span>
+          <span class="tool-spec-val">framework-based</span>
         </li>
         <li class="tool-spec-row">
           <span class="tool-spec-num">03</span>
-          <span class="tool-spec-name">rightsize_workloads</span>
-          <span class="tool-spec-val">3 sources</span>
-        </li>
-        <li class="tool-spec-row">
-          <span class="tool-spec-num">04</span>
-          <span class="tool-spec-name">well_architected_review</span>
-          <span class="tool-spec-val">all sources</span>
-        </li>
-        <li class="tool-spec-row">
-          <span class="tool-spec-num">05</span>
-          <span class="tool-spec-name">cost_of_policy</span>
-          <span class="tool-spec-val">2 sources</span>
-        </li>
-        <li class="tool-spec-row">
-          <span class="tool-spec-num">06</span>
-          <span class="tool-spec-name">trace_incident</span>
-          <span class="tool-spec-val">4 sources</span>
+          <span class="tool-spec-name">audit_namespace</span>
+          <span class="tool-spec-val">pss · cis</span>
         </li>
       </ul>
     </div>
 
     <div class="hero-output">
-      <span class="line"><span class="arrow">→</span> audit_namespace(<span class="hl">"payments"</span>)</span>
-      <span class="line"><span class="arrow">↳</span> root cause: deploy d4c7f19</span>
-      <span class="line"><span class="arrow">↳</span> waste: <span class="hl">€340/mo</span> rightsizing</span>
-      <span class="line"><span class="arrow">↳</span> <span class="hl">3 pods</span> run as root (PCI)</span>
-      <span class="line"><span class="arrow">↳</span> ✓ remediation plan ready</span>
+      <span class="line"><span class="arrow">→</span> investigate_namespace(<span class="hl">"payments"</span>)</span>
+      <span class="line"><span class="arrow">↳</span> 3 pods unhealthy · deploy d4c7f19</span>
+      <span class="line"><span class="arrow">↳</span> <span class="hl">api-gateway</span> restart loop · OOMKilled</span>
+      <span class="line"><span class="arrow">↳</span> <span class="hl">elevated errors</span> from 14:32 UTC</span>
+      <span class="line"><span class="arrow">↳</span> ✓ likely cause + rollback ready</span>
     </div>
   </div>
 </div>
@@ -1541,24 +1579,21 @@ footer a:hover { color: var(--accent); }
           <rect x="40" y="298" width="912" height="102" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
           <rect x="40" y="298" width="4" height="102" fill="var(--accent)"/>
           <text x="62" y="328" fill="var(--ink)" font-size="18" font-family="Instrument Serif, serif" font-style="italic">insigh8s-mcp</text>
-          <text x="62" y="347" fill="var(--ink-muted)" font-size="11" style="letter-spacing: 0.04em;">Opinionated composition layer · 6 composite tools · graceful degradation</text>
+          <text x="62" y="347" fill="var(--ink-muted)" font-size="11" style="letter-spacing: 0.04em;">One tool per intent · v0.1 ships 3 composite tools · graceful degradation</text>
 
-          <!-- Tool pills -->
+          <!-- Tool pills: v0.1 tools, one per intent -->
           <g font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">
-            <rect x="62" y="362" width="130" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
-            <text x="72" y="377" fill="var(--accent)">audit_namespace</text>
+            <rect x="130" y="362" width="190" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
+            <text x="140" y="377" fill="var(--accent)">investigate_namespace</text>
 
-            <rect x="200" y="362" width="172" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
-            <text x="210" y="377" fill="var(--accent)">find_expensive_violators</text>
+            <rect x="340" y="362" width="148" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
+            <text x="350" y="377" fill="var(--accent)">namespace_cost</text>
 
-            <rect x="380" y="362" width="148" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
-            <text x="390" y="377" fill="var(--accent)">rightsize_workloads</text>
+            <rect x="508" y="362" width="170" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
+            <text x="518" y="377" fill="var(--accent)">audit_namespace</text>
 
-            <rect x="536" y="362" width="172" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
-            <text x="546" y="377" fill="var(--accent)">well_architected_review</text>
-
-            <rect x="716" y="362" width="124" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
-            <text x="726" y="377" fill="var(--accent)">cost_of_policy</text>
+            <rect x="698" y="362" width="172" height="22" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-width="0.5"/>
+            <text x="708" y="377" fill="var(--accent)">list_audit_frameworks</text>
           </g>
         </g>
 
@@ -1629,100 +1664,109 @@ footer a:hover { color: var(--accent); }
       <div class="qg-cell">
         <div class="qg-role"><span class="sw" style="background: #3b82f6;"></span>Developer</div>
         <div class="qg-q">my deploy failed. what broke?</div>
-        <div class="qg-answered">kubectl + prometheus · ~2s</div>
+        <div class="qg-answered">investigate_namespace · ~3s</div>
       </div>
       <div class="qg-cell">
         <div class="qg-role"><span class="sw" style="background: #10b981;"></span>SRE</div>
-        <div class="qg-q">audit the payments namespace</div>
-        <div class="qg-answered">all 5 sources · ~6s</div>
+        <div class="qg-q">something's wrong in payments</div>
+        <div class="qg-answered">investigate_namespace · ~6s</div>
       </div>
       <div class="qg-cell">
         <div class="qg-role"><span class="sw" style="background: #a855f7;"></span>Security</div>
-        <div class="qg-q">which pods run as root?</div>
-        <div class="qg-answered">kubectl + kyverno · ~3s</div>
+        <div class="qg-q">audit payments against CIS</div>
+        <div class="qg-answered">audit_namespace(cis) · ~4s</div>
       </div>
       <div class="qg-cell">
         <div class="qg-role"><span class="sw" style="background: #d97706;"></span>FinOps</div>
-        <div class="qg-q">which workloads waste the most?</div>
-        <div class="qg-answered">opencost + prometheus · ~4s</div>
+        <div class="qg-q">what does payments cost us?</div>
+        <div class="qg-answered">namespace_cost · ~2s</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═════════════════════════════════════════════════
-     TOOLS (table format)
+     TOOLS (v0.1 · intent-based taxonomy)
      ═════════════════════════════════════════════════ -->
 <section class="block" id="tools">
   <div class="block-head reveal">
     <div class="block-label"><span class="num">02</span>The tools</div>
     <div>
-      <h2 class="block-title">Not another wrapper. <span class="italic">An opinion.</span></h2>
+      <h2 class="block-title">One tool per <span class="italic">intent.</span></h2>
       <p class="block-intro">
-        Individual MCP servers expose their product's primitives. Insigh8s exposes the abstractions a platform engineer actually thinks in. Questions that cross product boundaries, answered in one call.
+        Each tool answers one clear question. An SRE investigating a problem, a FinOps engineer tracking spend, and a compliance reviewer running an audit all want different answers, so they get different tools. No god-tool that tries to do everything.
       </p>
     </div>
   </div>
 
   <div class="tools-table reveal">
+
+    <!-- INTENT 01: SRE -->
+    <div class="tt-intent-row">
+      <div class="tt-intent-num">◆ 01</div>
+      <div class="tt-intent-body">
+        <div class="tt-intent-name">Investigate: <em>what's wrong?</em></div>
+        <div class="tt-intent-desc">For SREs and platform engineers · root-cause triage</div>
+      </div>
+    </div>
     <div class="tt-row">
-      <div class="tt-cell tt-num">01</div>
-      <div class="tt-cell tt-call">audit_namespace<span class="args">(name, window)</span></div>
-      <div class="tt-cell tt-desc">The 2am namespace triage. Cost spike, policy drift, workload health, unauthorized flows. One prompt, one answer.</div>
+      <div class="tt-cell tt-num">i.1</div>
+      <div class="tt-cell tt-call">investigate_namespace<span class="args">(namespace, window)</span></div>
+      <div class="tt-cell tt-desc">Unhealthy pods, recent deploys that correlate, error log patterns, unusual flows, admission denials. The 2am triage call, correlated.</div>
       <div class="tt-cell tt-sources">
-        <span class="src-tag">opencost</span>
         <span class="src-tag">kubectl</span>
-        <span class="src-tag">kyverno</span>
+        <span class="src-tag">prometheus</span>
         <span class="src-tag">hubble</span>
+        <span class="src-tag">logs</span>
+      </div>
+    </div>
+
+    <!-- INTENT 02: FINOPS -->
+    <div class="tt-intent-row">
+      <div class="tt-intent-num">◆ 02</div>
+      <div class="tt-intent-body">
+        <div class="tt-intent-name">Spend: <em>what does this cost?</em></div>
+        <div class="tt-intent-desc">For FinOps and platform leads · cost-only, nothing else</div>
       </div>
     </div>
     <div class="tt-row">
-      <div class="tt-cell tt-num">02</div>
-      <div class="tt-cell tt-call">find_expensive_violators<span class="args">(min_cost)</span></div>
-      <div class="tt-cell tt-desc">Workloads that are both expensive and violate policy. Your remediation priority list, ranked by blast radius.</div>
+      <div class="tt-cell tt-num">c.1</div>
+      <div class="tt-cell tt-call">namespace_cost<span class="args">(namespace, window)</span></div>
+      <div class="tt-cell tt-desc">Spend for this namespace over the window, broken down by workload. Week-over-week delta. Top cost drivers ranked.</div>
       <div class="tt-cell tt-sources">
         <span class="src-tag">opencost</span>
-        <span class="src-tag">kyverno</span>
+      </div>
+    </div>
+
+    <!-- INTENT 03: AUDIT -->
+    <div class="tt-intent-row">
+      <div class="tt-intent-num">◆ 03</div>
+      <div class="tt-intent-body">
+        <div class="tt-intent-name">Audit: <em>is this compliant?</em></div>
+        <div class="tt-intent-desc">For security and compliance · pass/fail against a named framework</div>
       </div>
     </div>
     <div class="tt-row">
-      <div class="tt-cell tt-num">03</div>
-      <div class="tt-cell tt-call">rightsize_workloads<span class="args">(namespace)</span></div>
-      <div class="tt-cell tt-desc">Requests vs p95 usage, ranked by monthly euro waste. Copy-paste patches included. No more staring at Grafana histograms.</div>
-      <div class="tt-cell tt-sources">
-        <span class="src-tag">opencost</span>
-        <span class="src-tag">prometheus</span>
-        <span class="src-tag">kubectl</span>
+      <div class="tt-cell tt-num">a.1</div>
+      <div class="tt-cell tt-call">audit_namespace<span class="args">(namespace, framework)</span></div>
+      <div class="tt-cell tt-desc">
+        Check compliance against a specific framework. v0.1 ships with <span style="font-family: var(--mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); padding: 1px 6px; border-radius: 2px;">pod-security-standards-restricted</span> and <span style="font-family: var(--mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); padding: 1px 6px; border-radius: 2px;">cis-kubernetes-benchmark</span>. Returns pass/fail per control, violator pods, remediation patches.
       </div>
-    </div>
-    <div class="tt-row">
-      <div class="tt-cell tt-num">04</div>
-      <div class="tt-cell tt-call">well_architected_review<span class="args">(cluster)</span></div>
-      <div class="tt-cell tt-desc">Score your cluster against five pillars: security, cost, reliability, ops excellence, sustainability. Modeled on the Kubernetes Well-Architected Framework.</div>
-      <div class="tt-cell tt-sources">
-        <span class="src-tag">all sources</span>
-      </div>
-    </div>
-    <div class="tt-row">
-      <div class="tt-cell tt-num">05</div>
-      <div class="tt-cell tt-call">cost_of_policy<span class="args">(policy_name)</span></div>
-      <div class="tt-cell tt-desc">If I enforce this Kyverno policy cluster-wide today, what's the financial impact? Simulate before you enforce.</div>
-      <div class="tt-cell tt-sources">
-        <span class="src-tag">kyverno</span>
-        <span class="src-tag">opencost</span>
-      </div>
-    </div>
-    <div class="tt-row">
-      <div class="tt-cell tt-num">06</div>
-      <div class="tt-cell tt-call">trace_incident<span class="args">(symptom)</span></div>
-      <div class="tt-cell tt-desc">Correlate a symptom back through deploys, config drift, policy changes, and cost signals. Root cause, not just alerts.</div>
       <div class="tt-cell tt-sources">
         <span class="src-tag">kubectl</span>
-        <span class="src-tag">prometheus</span>
-        <span class="src-tag">security</span>
-        <span class="src-tag">git</span>
+        <span class="src-tag">pss</span>
+        <span class="src-tag">cis</span>
       </div>
     </div>
+    <div class="tt-row">
+      <div class="tt-cell tt-num">a.2</div>
+      <div class="tt-cell tt-call">list_audit_frameworks<span class="args">()</span></div>
+      <div class="tt-cell tt-desc">Returns the frameworks this server knows how to check, with short descriptions. Your AI calls this first when the user hasn't specified which framework.</div>
+      <div class="tt-cell tt-sources">
+        <span class="src-tag">metadata</span>
+      </div>
+    </div>
+
   </div>
 
   <!-- Opinion showcase -->
@@ -1737,29 +1781,29 @@ footer a:hover { color: var(--accent); }
       <li class="opinion-item">
         <span class="opinion-num">01</span>
         <span class="opinion-text">
-          Root cause before symptoms.
-          <span class="sub">When pods are unhealthy, show the recent deploy that caused it, not just the current state.</span>
+          One tool per intent.
+          <span class="sub">Investigation returns root cause. Cost returns spend. Audit returns compliance. No tool mixes concerns.</span>
         </span>
       </li>
       <li class="opinion-item">
         <span class="opinion-num">02</span>
         <span class="opinion-text">
-          Every policy violation comes with its cost impact.
-          <span class="sub">A root-running pod that costs <code>€400/mo</code> is a different priority than one in dev.</span>
+          Root cause before symptoms.
+          <span class="sub">When <code>investigate_namespace</code> finds unhealthy pods, it also shows the deploy that caused them and the error pattern in logs.</span>
         </span>
       </li>
       <li class="opinion-item">
         <span class="opinion-num">03</span>
         <span class="opinion-text">
-          Rightsizing threshold: <code>p95 usage + 20% headroom</code>.
-          <span class="sub">Defensible, used by real FinOps teams, not arbitrary. Configurable if you disagree.</span>
+          Audit requires a framework.
+          <span class="sub">No "just audit this" catch-all. The caller picks CIS or PSS. If they haven't, the AI asks which one via <code>list_audit_frameworks()</code>.</span>
         </span>
       </li>
       <li class="opinion-item">
         <span class="opinion-num">04</span>
         <span class="opinion-text">
-          Priority ranked by blast radius × cost.
-          <span class="sub">Not alphabetical, not severity alone. What actually hurts if you don't fix it today.</span>
+          Findings ranked by blast radius.
+          <span class="sub">Not alphabetical, not severity alone. What actually hurts if you don't fix it today comes first.</span>
         </span>
       </li>
       <li class="opinion-item">
@@ -1883,44 +1927,44 @@ footer a:hover { color: var(--accent); }
 
     <div class="code-compare">
       <div class="code-side bad">
-        <div class="code-label"><span class="pill">before</span>Six raw MCPs</div>
-        <div class="code-sub">Every join is your job.</div>
+        <div class="code-label"><span class="pill">before</span>Raw MCPs</div>
+        <div class="code-sub">You drive every step.</div>
         <pre><span class="cmt"># you, manually:</span>
 <span class="call">kubectl_get_pods</span>(<span class="str">"payments"</span>)
-<span class="kw">→</span> 40 pods, which matter?
+<span class="kw">→</span> which pods are failing?
 
-<span class="call">opencost_get_allocation</span>(<span class="str">"7d"</span>)
-<span class="kw">→</span> €847, up from €688
+<span class="call">kubectl_describe</span>(<span class="str">"api-gw-..."</span>)
+<span class="kw">→</span> OOMKilled, but why now?
 
-<span class="call">kyverno_list_policy_reports</span>()
-<span class="kw">→</span> 14 violations, filter?
+<span class="call">kubectl_rollout_history</span>(...)
+<span class="kw">→</span> 3 recent deploys, which one?
 
 <span class="call">prometheus_query</span>(<span class="str">"rate(...)"</span>)
-<span class="cmt"># still correlating.</span></pre>
+<span class="cmt"># you're writing PromQL at 2am.</span></pre>
         <div class="code-foot">
           <strong>Raw primitives.</strong>
-          You still need the thresholds, the priorities, what "good" looks like.
+          You still need to know the thresholds, the priorities, what "good" looks like.
         </div>
       </div>
 
       <div class="code-side good">
         <div class="code-label"><span class="pill">with insigh8s</span>One call</div>
-        <div class="code-sub">Pre-joined, pre-judged, pre-prioritized.</div>
+        <div class="code-sub">Intent-based tool, pre-joined output.</div>
         <pre><span class="cmt"># your AI, once:</span>
-<span class="call">audit_namespace</span>(
-  name=<span class="str">"payments"</span>,
-  window=<span class="str">"7d"</span>
+<span class="call">investigate_namespace</span>(
+  namespace=<span class="str">"payments"</span>,
+  window=<span class="str">"15m"</span>
 )
 
-<span class="kw">↳</span> root cause: d4c7f19
-<span class="kw">↳</span> €340/mo rightsizing
-<span class="kw">↳</span> 3 pods run as root (PCI)
-<span class="kw">↳</span> priority-ranked plan
-<span class="kw">↳</span> kubectl patches
+<span class="kw">↳</span> api-gateway OOMKilled x3
+<span class="kw">↳</span> correlates to deploy
+<span class="kw">   </span> d4c7f19 (14:32 UTC)
+<span class="kw">↳</span> error rate: 3% → 47%
+<span class="kw">↳</span> likely cause + rollback
 <span class="cmt"># ~6 seconds.</span></pre>
         <div class="code-foot">
-          <strong>Real production triage.</strong>
-          Encoded as one call your AI can reason over.
+          <strong>One intent, one tool.</strong>
+          Cost and compliance questions have their own tools. Each answers what was actually asked.
         </div>
       </div>
     </div>
@@ -1962,9 +2006,9 @@ footer a:hover { color: var(--accent); }
           <span class="tag">Design</span>
           <span>Coming soon</span>
         </div>
-        <div class="post-title">Why `audit_namespace` is the <span class="italic">first</span> tool we're shipping.</div>
+        <div class="post-title">Why `investigate_namespace` is the <span class="italic">first</span> tool we're shipping.</div>
         <p class="post-excerpt">
-          A walkthrough of what a single 2am triage call actually does under the hood: the five data sources, the join logic, and the opinions encoded in Go.
+          A walkthrough of what a single SRE triage call actually does under the hood: the data sources, the join logic, and the opinions encoded in Go.
         </p>
         <span class="post-readmore">Follow on Hashnode <span class="arrow">→</span></span>
       </a>
